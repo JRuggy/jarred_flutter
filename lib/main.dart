@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 't2',
       title: 'Shorts',
-      amount: 70.10,
+      amount: 70.11,
       date: DateTime.now(),
     ),
   ];
@@ -68,14 +68,47 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
+                      // The margin: EdgeInsets.symmetric is used to give space with it's vertical and horizontal properties
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        // Border.all is for border  on both directions
+                        border: Border.all(
+                          color: Color.fromARGB(255, 255, 166, 0),
+                          width: 2,
+                        ),
+                      ),
+                      // Giving some space in the box
+                      padding: EdgeInsets.all(5),
                       child: Text(
                         tx.amount.toString(),
+                        // The line below is for styling the amount element text
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.purple,
+                        ),
                       ),
                     ),
                     Column(
+                      // main axis is top to bottom and cross axis is left to right
+                      // the crossaxisalignment.start aligns the texts to the left side
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title),
-                        Text(tx.date.toString()),
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          tx.date.toString(),
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ],
                     )
                   ],
