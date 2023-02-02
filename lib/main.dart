@@ -23,20 +23,28 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         // ignore: prefer_const_literals_to_create_immutables
         children: <Widget>[
-          Card(
-            color: Colors.orange,
-            child: Container(
-              // color: Color.fromARGB(255, 248, 46, 164),
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.orange,
+              child: Container(
+                // color: Color.fromARGB(255, 248, 46, 164),
 
-              // The double.infinity property means take as much width as you can on a certain device
-              width: double.infinity,
-              // width: 100,
-              child: Text('CHART'),
+                // The double.infinity property means take as much width as you can on a certain device
+                // width: double.infinity,
+                // width: 100,
+                child: Text('CHART'),
+              ),
+              elevation: 5,
             ),
-            elevation: 5,
           ),
           Card(
-            child: Text('List Of Transactions'),
+            child: Container(
+              // width: 90,
+              width: double.infinity,
+              color: Color.fromARGB(255, 43, 255, 0),
+              child: Text('List Of Transactions'),
+            ),
           ),
         ],
       ),
