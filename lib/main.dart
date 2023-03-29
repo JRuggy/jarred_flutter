@@ -1,6 +1,7 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, annotate_overrides, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, duplicate_ignore
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, annotate_overrides, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, duplicate_ignore, prefer_interpolation_to_compose_strings, unused_import
 import 'package:flutter/material.dart';
 import 'package:jarred/transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App Jarred',
+      title: 'App jarred',
       home: MyHomePage(),
     );
   }
@@ -83,7 +84,7 @@ class MyHomePage extends StatelessWidget {
                       // Giving some space in the box
                       padding: EdgeInsets.all(5),
                       child: Text(
-                        tx.amount.toString(),
+                        'Tshs.' + tx.amount.toString() + '/=',
                         // The line below is for styling the amount element text
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -106,7 +107,8 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          tx.date.toString(),
+                          // tx.date.toString(),
+                          DateFormat().format(tx.date),
                           style: TextStyle(color: Colors.green),
                         ),
                       ],
