@@ -108,6 +108,8 @@ class MyHomePage extends StatelessWidget {
                         ),
                         Text(
                           // tx.date.toString(),
+                          // DateFormat('y-m-d h:m:sa').format(tx.date), //This is a printing pattern of the date as the way you want
+                          // DateFormat.yMMMd().format(tx.date), // And this is still a pattern to come through it
                           DateFormat().format(tx.date),
                           style: TextStyle(color: Colors.green),
                         ),
