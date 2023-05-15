@@ -31,35 +31,38 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('App Jarred'),
       ),
-      body: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.orange,
-              child: Container(
-                // color: Color.fromARGB(255, 248, 46, 164),
+      // You can wrap the body column into singlechildscrollview in order to scroll items
+      body: SingleChildScrollView(
+        child: Column(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.orange,
+                child: Container(
+                  // color: Color.fromARGB(255, 248, 46, 164),
 
-                // The double.infinity property means take as much width as you can on a certain device
-                // width: double.infinity,
-                // width: 100,
-                child: Text('CHART'),
+                  // The double.infinity property means take as much width as you can on a certain device
+                  // width: double.infinity,
+                  // width: 100,
+                  child: Text('CHART'),
+                ),
+                elevation: 5,
               ),
-              elevation: 5,
             ),
-          ),
 
-          UserTransactions(),
-          // Card(
-          //   child: Container(
-          //     // width: 90,
-          //     width: double.infinity,
-          //     color: Color.fromARGB(255, 43, 255, 0),
-          //     child: Text('List Of Transactions'),
-          //   ),
-          // ),
-        ],
+            UserTransactions(),
+            // Card(
+            //   child: Container(
+            //     // width: 90,
+            //     width: double.infinity,
+            //     color: Color.fromARGB(255, 43, 255, 0),
+            //     child: Text('List Of Transactions'),
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }

@@ -8,8 +8,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 class NewTransaction extends StatelessWidget {
   // const NewTransaction({super.key});
 
+  final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
+  NewTransaction(this.addTx);
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +50,12 @@ class NewTransaction extends StatelessWidget {
                 onPressed: () {
                   // print(titleInput);
                   // print(amountInput);
-                  print(titleController);
-                  print(amountController);
+                  // print(titleController);
+                  // print(amountController);
+                  addTx(titleController.text,
+                      double.parse(amountController.text));
                 },
-                child: Text('Add Transcation'))
+                child: Text('Add Transaction'))
           ],
         ),
       ),
