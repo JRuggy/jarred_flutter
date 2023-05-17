@@ -37,6 +37,10 @@ class TransactionList extends StatelessWidget {
                     padding: EdgeInsets.all(5),
                     child: Text(
                       'Tshs.' + tx.amount.toString() + '/=',
+
+                      // This line below limits the number to two decimal points and rounds off if great than 5 (five)
+                      // 'Tshs.' + tx.amount.toStringAsFixed(2) + '/=',
+
                       // The line below is for styling the amount element text
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
