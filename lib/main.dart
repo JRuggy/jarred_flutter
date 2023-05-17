@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner:
+          false, //This statement removes the debug banner
       title: 'App Jarred',
       home: MyHomePage(),
     );
@@ -30,6 +32,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('App Jarred'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          ),
+        ],
       ),
       // You can wrap the body column into singlechildscrollview in order to scroll items
       body: SingleChildScrollView(
@@ -48,7 +56,7 @@ class MyHomePage extends StatelessWidget {
                   // width: 100,
                   child: Text('CHART'),
                 ),
-                elevation: 5,
+                elevation: 10,
               ),
             ),
 
