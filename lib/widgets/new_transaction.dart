@@ -46,7 +46,7 @@ class NewTransaction extends StatelessWidget {
               //   titleInput = val;
               // },
               controller: titleController,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => submitData(), // The (_) means, i know it's there but i dontcare and i don't wanna use it either.
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),

@@ -1,10 +1,10 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, annotate_overrides, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, duplicate_ignore, prefer_interpolation_to_compose_strings, unused_import, avoid_print, must_be_immutable
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, annotate_overrides, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, duplicate_ignore, prefer_interpolation_to_compose_strings, unused_import, avoid_print, must_be_immutable, unused_element
 import 'package:flutter/material.dart';
 import 'package:jarred/models/transaction.dart';
 import 'package:intl/intl.dart';
 import 'package:jarred/widgets/new_transaction.dart';
 import 'package:jarred/widgets/transaction_list.dart';
-import 'package:jarred/widgets/user_transactions.dart';
+// import 'package:jarred/widgets/user_transactions.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,12 +20,53 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  // late String titleInput;
-  // late String amountInput;
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class _MyHomePageState extends State<MyHomePage> {
+  // late String titleInput;
+  final List<Transaction> _userTransactions = [
+    Transaction(
+      id: 't1',
+      title: 'New Shoes',
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Shorts',
+      amount: 70.11,
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _addNewTransaction(String txTitle, double txAmount) {
+    final newTx = Transaction(
+        id: DateTime.now().toString(),
+        title: txTitle,
+        amount: txAmount,
+        date: DateTime.now());
+
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
+// This is for popping up modals
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () {},
+          child: NewTransaction(_addNewTransaction),
+          behavior: HitTestBehavior.opaque,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +75,12 @@ class MyHomePage extends StatelessWidget {
         title: Text('App Jarred'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {},
+            icon: Icon(
+              Icons.add,
+              color: Colors.amber,
+            ),
+            // onPressed: () {}, // This does nothing by default
+            onPressed: () => _startAddNewTransaction(context),
           ),
         ],
       ),
@@ -60,7 +105,7 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
 
-            UserTransactions(),
+            TransactionList(_userTransactions),
             // Card(
             //   child: Container(
             //     // width: 90,
@@ -70,6 +115,14 @@ class MyHomePage extends StatelessWidget {
             //   ),
             // ),
           ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _startAddNewTransaction(context),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
         ),
       ),
     );
