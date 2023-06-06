@@ -72,12 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: Text('App Jarred'),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.add,
-              color: Colors.amber,
+              color: Colors.red,
             ),
             // onPressed: () {}, // This does nothing by default
             onPressed: () => _startAddNewTransaction(context),

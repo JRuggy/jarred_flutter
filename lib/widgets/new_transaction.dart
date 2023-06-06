@@ -1,18 +1,25 @@
-// ignore_for_file: implementation_imports, unused_import, avoid_print, use_key_in_widget_constructors, prefer_const_constructors, unnecessary_import
+// ignore_for_file: implementation_imports, unused_import, avoid_print, use_key_in_widget_constructors, prefer_const_constructors, unnecessary_import, prefer_const_constructors_in_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   // const NewTransaction({super.key});
 
   final Function addTx;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTransaction(this.addTx);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -24,10 +31,12 @@ class NewTransaction extends StatelessWidget {
     }
 
     // addTx(titleController.text, double.parse(amountController.text));
-    addTx(
+    widget.addTx(
       enteredTitle,
       enteredAmount,
     );
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -46,7 +55,8 @@ class NewTransaction extends StatelessWidget {
               //   titleInput = val;
               // },
               controller: titleController,
-              onSubmitted: (_) => submitData(), // The (_) means, i know it's there but i dontcare and i don't wanna use it either.
+              onSubmitted: (_) =>
+                  submitData(), // The (_) means, i know it's there but i dontcare and i don't wanna use it either.
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
