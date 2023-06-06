@@ -29,7 +29,7 @@ class TransactionList extends StatelessWidget {
                     decoration: BoxDecoration(
                       // Border.all is for border  on both directions
                       border: Border.all(
-                        color: Color.fromARGB(255, 255, 166, 0),
+                        color: Theme.of(context).shadowColor,
                         width: 2,
                       ),
                     ),
@@ -45,7 +45,7 @@ class TransactionList extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),
@@ -59,7 +59,7 @@ class TransactionList extends StatelessWidget {
                       Text(
                         tx.title,
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -69,7 +69,7 @@ class TransactionList extends StatelessWidget {
                         // DateFormat('y-m-d h:m:sa').format(tx.date), //This is a printing pattern of the date as the way you want
                         // DateFormat.yMMMd().format(tx.date), // And this is still a pattern to come through it
                         DateFormat().format(tx.date),
-                        style: TextStyle(color: Colors.green),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   )

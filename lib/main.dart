@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner:
           false, //This statement removes the debug banner
-      title: 'App Jarred',
+      title: 'Personal Expenses',
+      // accentcolor changed to hintcolor
+      theme: ThemeData(primarySwatch: Colors.purple, hintColor: Colors.amber),
       home: MyHomePage(),
     );
   }
@@ -72,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('App Jarred'),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.add,
-              color: Colors.red,
+              color: Colors.white,
             ),
             // onPressed: () {}, // This does nothing by default
             onPressed: () => _startAddNewTransaction(context),
@@ -93,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.orange,
+                color: Colors.blue,
                 child: Container(
                   // color: Color.fromARGB(255, 248, 46, 164),
 
