@@ -16,7 +16,12 @@ class MyApp extends StatelessWidget {
           false, //This statement removes the debug banner
       title: 'Personal Expenses',
       // accentcolor changed to hintcolor
-      theme: ThemeData(primarySwatch: Colors.purple, hintColor: Colors.amber),
+      theme: ThemeData(
+          primarySwatch: Colors.purple,
+          hintColor: Colors.amber,
+          fontFamily: 'Quicksand',
+          appBarTheme: AppBarTheme(toolbarTextStyle: ThemeData.light().textTheme.copyWith().bodyMedium, titleTextStyle: ThemeData.light().textTheme.copyWith().titleLarge)
+          ),
       home: MyHomePage(),
     );
   }
@@ -75,7 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+          style: TextStyle(fontFamily: 'Quicksand'),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
